@@ -1,11 +1,33 @@
 [project]
-name = "network-diagnostics-toolkit"
-version = "0.1.0"
-description = "Add your description here"
+name = "netpulse"
+version = "0.2.1"
+description = "Your network's heartbeat. A developer-friendly diagnostic & monitoring tool."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
+authors = [
+    { name = "Amir Hossein", email = "amirse7997@gmail.com" }
+]
+license = { text = "Apache-2.0" }
 dependencies = [
     "dnspython>=2.7.0",
     "httpx>=0.28.1",
     "typer>=0.15.2",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
 ]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+]
+
+[project.scripts]
+netpulse = "netpulse.cli:app"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
